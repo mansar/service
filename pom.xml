@@ -39,10 +39,10 @@
     <distributionManagement>
         <downloadUrl>https://github.com/mansar/service</downloadUrl>
         <repository>
-        <id>internal.repo</id>
-        <name>Temporary Staging Repository</name>
-        <url>file:////${project.build.directory}/${project.artifactId}/mvn-repo</url>
-        </repository>
+             <id>mule-releases</id>
+            <name>Mule Release Repository</name>
+            <url>https://github.com/mansar/service/release</url>
+        </repository>        
     </distributionManagement>	
 	<dependencies>
 
