@@ -188,6 +188,12 @@
 			<version>2.1.1</version>
 		</dependency>
 	</dependencies>	
+	
+    <scm>
+        <connection>scm:git:git@github.com:mansar/service.git</connection>
+        <developerConnection>scm:git:git@github.com:mansar/service.git</developerConnection>
+        <url>https://github.com/mansar/service</url>
+    </scm>	
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<finalName>${project.artifactId}</finalName>
