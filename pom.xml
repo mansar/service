@@ -39,11 +39,34 @@
     <distributionManagement>
         <downloadUrl>https://github.com/mansar/service</downloadUrl>
         <repository>
-             <id>mule-releases</id>
-            <name>Mule Release Repository</name>
+             <id>service-releases</id>
+            <name>Service Release Repository</name>
             <url>https://github.com/mansar/service/release</url>
+            <layout>default</layout>
         </repository>        
     </distributionManagement>	
+    <profiles>
+    <profile>
+    <repositories>
+        <repository>
+          <id>release</id>
+          <name>service Snapshots</name>
+          <releases>
+            <enabled>false</enabled>
+            <updatePolicy>always</updatePolicy>
+            <checksumPolicy>warn</checksumPolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+            <checksumPolicy>fail</checksumPolicy>
+          </snapshots>
+          <url>https://github.com/mansar/service/release</url>
+          <layout>default</layout>
+        </repository>
+      </repositories>
+    
+    </profile></profiles>
 	<dependencies>
 
 		<dependency>
