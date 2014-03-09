@@ -43,7 +43,13 @@
             <name>Service Release Repository</name>
             <url>https://github.com/mansar/service/release</url>
             <layout>default</layout>
-        </repository>        
+        </repository>
+        <snapshotRepository>
+            <id>service-snapshots</id>
+            <name>service Snapshot Repository</name>
+            <url>file:////${project.build.directory}/${project.artifactId}/mvn-repo</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>                
     </distributionManagement>	
     <profiles>
     <profile>
