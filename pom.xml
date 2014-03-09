@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.asi.service</groupId>
   <artifactId>productService</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
   <packaging>war</packaging>
   
     <properties>
@@ -36,7 +36,14 @@
         <antlrVersion>3.1.1</antlrVersion>
         <derbyVersion>10.10.1.1</derbyVersion>
 	</properties>
-	
+    <distributionManagement>
+        <downloadUrl>https://github.com/mansar/service</downloadUrl>
+        <repository>
+        <id>internal.repo</id>
+        <name>Temporary Staging Repository</name>
+        <url>file:////${project.build.directory}/${project.artifactId}/mvn-repo</url>
+        </repository>
+    </distributionManagement>	
 	<dependencies>
 
 		<dependency>
@@ -193,7 +200,8 @@
         <connection>scm:git:git@github.com:mansar/service.git</connection>
         <developerConnection>scm:git:git@github.com:mansar/service.git</developerConnection>
         <url>https://github.com/mansar/service</url>
-    </scm>	
+      <tag>HEAD</tag>
+  </scm>	
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<finalName>${project.artifactId}</finalName>
