@@ -12,69 +12,58 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @XmlRootElement
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonPropertyOrder({
-    "ID",
-    "ProductId",
-    "CompanyId",
-    "Url"
-})
+
 public class ProductInventoryLink implements Serializable{
 
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@JsonProperty("ID")
+	
     private Integer iD;
-    @JsonProperty("ProductId")
+    
     private Integer productId;
-    @JsonProperty("CompanyId")
+    
     private Integer companyId;
-    @JsonProperty("Url")
+   
     private String url;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("ID")
+    
     public Integer getID() {
         return iD;
     }
 
-    @JsonProperty("ID")
+    
     public void setID(Integer iD) {
         this.iD = iD;
     }
 
-    @JsonProperty("ProductId")
-    public Integer getProductId() {
+       public Integer getProductId() {
         return productId;
     }
 
-    @JsonProperty("ProductId")
+   
     public void setProductId(Integer productId) {
         this.productId = productId;
     }
 
-    @JsonProperty("CompanyId")
     public Integer getCompanyId() {
         return companyId;
     }
 
-    @JsonProperty("CompanyId")
+  
     public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
     }
 
-    @JsonProperty("Url")
+    
     public String getUrl() {
         return url;
     }
 
-    @JsonProperty("Url")
+   
     public void setUrl(String url) {
         this.url = url;
     }

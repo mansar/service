@@ -13,12 +13,28 @@
 		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
    
-    <!-- Uncomment and add your base-package here:
-         <context:component-scan
-            base-package="org.springframework.samples.service"/>  -->
-  
+	<context:component-scan
+            base-package="com.asi"/>
+     <mvc:annotation-driven/>
+	<cache:annotation-driven />
+		<bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" p:config-location="classpath:ehcache.xml"/> 
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager" p:cache-manager-ref="ehcache"/> 	
+		<context:property-placeholder  location="classpath:dev-environment.properties, classpath:velocity-import.properties" order="1"/>
+		
+ 			
 	    <bean id="productServiceClient" class="com.asi.service.product.client.ProductClient">
 	        <constructor-arg ref="restTemplate"/>
+	    </bean>
+	    
+	    <bean id="lookupValuesClient" class="com.asi.service.product.client.LookupValuesClient">
+	        <property name="lookupRestTemplate" ref="restTemplate"/>
+	         <property name="lookupColorURL" value="${lookup.color.url}"></property> 
+	         <property name="lookupSizeURL" value="${lookup.sizes.url}"></property> 
+	         <property name="lookupMaterialURL" value="${lookup.material.url}"></property> 
+	    </bean>
+	   
+	    <bean id="productRepo" class="com.asi.core.repo.product.ProductRepo">
+	    	<property name="productClient" ref="productServiceClient"/>
 	    </bean>
 	   	<!-- To enable @RequestMapping process on type level and method level -->
    		<bean id="productDetail" class="com.asi.service.product.client.vo.ProductDetail"/>

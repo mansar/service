@@ -20,9 +20,10 @@ import com.asi.service.product.vo.Product;
 
 public class InvokeServiceTest {
 
-	private static String url = "http://localhost:8080/productService/api/product/550023590";
+	private static String url = "http://localhost:8080/productService/api/product/550024417";
+	//550023590";
 	@Rule
-	public ServerRunning serverRunning = ServerRunning.isRunning();
+	public ServerRunning serverRunning = ServerRunning.isNotRunning();
 
 	@Test
 	public void testConnectThroughClientAppJson() throws Exception {
@@ -32,10 +33,10 @@ public class InvokeServiceTest {
 		requestHeaders.setContentType(MediaType.APPLICATION_JSON);
 		ResponseEntity<Product> result = template.exchange(url,HttpMethod.GET, new HttpEntity<String>(requestHeaders), Product.class);
 		
-		assertEquals(result.getStatusCode(),HttpStatus.ACCEPTED);
+		assertEquals(result.getStatusCode(),HttpStatus.OK);
 		
 	}
-	@Test
+/*	@Test
 	public void testConnectThroughClientAppXML() throws Exception {
 		RestTemplate template = new RestTemplate();
 		HttpHeaders requestHeaders = new HttpHeaders();
@@ -45,6 +46,6 @@ public class InvokeServiceTest {
 		
 		assertEquals(result.getStatusCode(),HttpStatus.ACCEPTED);
 		
-	}
+	}*/
 
 }

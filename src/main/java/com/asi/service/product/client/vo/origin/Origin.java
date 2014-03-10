@@ -1,10 +1,10 @@
-package com.asi.service.product.vo;
 
-import java.io.Serializable;
+package com.asi.service.product.client.vo.origin;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.annotation.Generated;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -12,66 +12,55 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-@XmlRootElement
 
-public class ProductDataSheet  implements Serializable{
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Generated("org.jsonschema2pojo")
+@JsonPropertyOrder({
+    "ID",
+    "CodeValue",
+    "StandardValueFlag"
+})
+public class Origin {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-    
+    @JsonProperty("ID")
     private Integer iD;
-
-    private Integer productId;
-
-    private Integer companyId;
-
-    private String url;
+    @JsonProperty("CodeValue")
+    private String codeValue;
+    @JsonProperty("StandardValueFlag")
+    private String standardValueFlag;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-
+    @JsonProperty("ID")
     public Integer getID() {
         return iD;
     }
 
- 
+    @JsonProperty("ID")
     public void setID(Integer iD) {
         this.iD = iD;
     }
 
-  
-    public Integer getProductId() {
-        return productId;
+    @JsonProperty("CodeValue")
+    public String getCodeValue() {
+        return codeValue;
     }
 
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
+    @JsonProperty("CodeValue")
+    public void setCodeValue(String codeValue) {
+        this.codeValue = codeValue;
     }
 
- 
-    public Integer getCompanyId() {
-        return companyId;
+    @JsonProperty("StandardValueFlag")
+    public String getStandardValueFlag() {
+        return standardValueFlag;
     }
 
- 
-    public void setCompanyId(Integer companyId) {
-        this.companyId = companyId;
-    }
-
- 
-    public String getUrl() {
-        return url;
-    }
-
-
-    public void setUrl(String url) {
-        this.url = url;
+    @JsonProperty("StandardValueFlag")
+    public void setStandardValueFlag(String standardValueFlag) {
+        this.standardValueFlag = standardValueFlag;
     }
 
     @Override
@@ -89,13 +78,14 @@ public class ProductDataSheet  implements Serializable{
         return EqualsBuilder.reflectionEquals(this, other);
     }
 
-
+    @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
     }
 
-
+    @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
     }
+
 }

@@ -22,4 +22,6 @@ public class ProductClient {
 		 ProductDetail product = restTemplate.getForObject(productSearchUrl,ProductDetail.class,productID);
 		 return product;
 	 }
+	 
+	 
 }

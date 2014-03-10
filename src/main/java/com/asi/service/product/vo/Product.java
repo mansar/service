@@ -3,7 +3,6 @@ package com.asi.service.product.vo;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-
 public class Product {
     
     

@@ -186,7 +186,7 @@ public class ProductDetail {
     @JsonProperty("PriceGrids")
     private List<PriceGrid> priceGrids = new ArrayList<PriceGrid>();
     @JsonProperty("ProductNumbers")
-    private List<Object> productNumbers = new ArrayList<Object>();
+    private List<ProductNumber> productNumbers = new ArrayList<ProductNumber>();
     @JsonProperty("Relationships")
     private List<Relationship> relationships = new ArrayList<Relationship>();
     @JsonProperty("AddtionalShippingInfo")
@@ -704,12 +704,12 @@ public class ProductDetail {
     }
 
     @JsonProperty("ProductNumbers")
-    public List<Object> getProductNumbers() {
+    public List<ProductNumber> getProductNumbers() {
         return productNumbers;
     }
 
     @JsonProperty("ProductNumbers")
-    public void setProductNumbers(List<Object> productNumbers) {
+    public void setProductNumbers(List<ProductNumber> productNumbers) {
         this.productNumbers = productNumbers;
     }
 
