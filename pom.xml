@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.asi.service</groupId>
   <artifactId>productService</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.1</version>
   <packaging>war</packaging>
   
     <properties>
@@ -35,31 +35,8 @@
         <antVersion>1.7.0</antVersion>
         <antlrVersion>3.1.1</antlrVersion>
         <derbyVersion>10.10.1.1</derbyVersion>
-        <tomcat.http.port>8080</tomcat.http.port>
 	</properties>
 	
-    <profiles>
-    <profile>
-    <repositories>
-        <repository>
-          <id>release</id>
-          <name>service Snapshots</name>
-          <releases>
-            <enabled>false</enabled>
-            <updatePolicy>always</updatePolicy>
-            <checksumPolicy>warn</checksumPolicy>
-          </releases>
-          <snapshots>
-            <enabled>true</enabled>
-            <updatePolicy>never</updatePolicy>
-            <checksumPolicy>fail</checksumPolicy>
-          </snapshots>
-          <url>https://github.com/mansar/service/release</url>
-          <layout>default</layout>
-        </repository>
-      </repositories>
-    
-    </profile></profiles>
 	<dependencies>
 
 		<dependency>
@@ -116,7 +93,8 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.0.13</version>
+			<version>${logback.version}</version>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- Hibernate -->
@@ -166,21 +144,21 @@
 			<artifactId>rome</artifactId>
 			<version>0.5</version>
 		</dependency>
-		 <dependency>
-			<groupId>net.sourceforge.jexcelapi</groupId>
-			<artifactId>jxl</artifactId>
-			<version>2.6.12</version>
-		</dependency>
-		<dependency>
-		    <groupId>net.sf.supercsv</groupId>
-		    <artifactId>super-csv</artifactId>
-		    <version>2.1.0</version>
-		</dependency>
-		<dependency>
-		    <groupId>net.sf.supercsv</groupId>
-		    <artifactId>super-csv-dozer</artifactId>
-		    <version>2.1.0</version>
-		</dependency>
+ <dependency>
+	<groupId>net.sourceforge.jexcelapi</groupId>
+	<artifactId>jxl</artifactId>
+	<version>2.6.12</version>
+</dependency>
+<dependency>
+    <groupId>net.sf.supercsv</groupId>
+    <artifactId>super-csv</artifactId>
+    <version>2.1.0</version>
+</dependency>
+<dependency>
+    <groupId>net.sf.supercsv</groupId>
+    <artifactId>super-csv-dozer</artifactId>
+    <version>2.1.0</version>
+</dependency>
 
 <!-- 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
@@ -210,27 +188,17 @@
 			<version>2.1.1</version>
 		</dependency>
 		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
-			<version>1.0.13</version>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<version>${spring-framework.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>net.sf.ehcache</groupId>
-			<artifactId>ehcache</artifactId>
-			<version>2.8.1</version>
-		</dependency>		
 	</dependencies>	
 	
     <scm>
         <connection>scm:git:git@github.com:mansar/service.git</connection>
         <developerConnection>scm:git:git@github.com:mansar/service.git</developerConnection>
         <url>https://github.com/mansar/service</url>
-      <tag>HEAD</tag>
+      <tag>productService-0.0.1</tag>
   </scm>	
 	<build>
 		<defaultGoal>install</defaultGoal>
@@ -262,7 +230,12 @@
 	            
 	            <version>2.2</version>
 	            <configuration>
-	            	<server>tomcat-local</server>
+	            	<!--<port>9090</port>  
+	            	<serverXml>D:\\WebSites\\muleservice\\Servers\\tcat-config\\server.xml</serverXml>
+	                <tomcatUsers>D:\\WebSites\\muleservice\\Servers\\tcat-config\\conf/tomcat-users.xml</tomcatUsers>
+	                
+					<tomcatLoggingFile>D:\\temp\\tomcat_server.log</tomcatLoggingFile>
+					-->
 	                <extraDependencies>
 	                    <dependency>
 	                        <groupId>org.slf4j</groupId>
@@ -287,25 +260,6 @@
 	                </extraDependencies>
 	                
 	            </configuration>
-				<executions>
-				        <execution>
-				            <id>start-tomcat</id>
-				            <phase>pre-integration-test</phase>
-				            <goals>
-				                <goal>run-war</goal>
-				            </goals>
-				            <configuration>
-				                <fork>true</fork>
-				            </configuration>
-				        </execution>
-				        <execution>
-				            <id>stop-tomcat</id>
-				            <phase>post-integration-test</phase>
-				            <goals>
-				                <goal>shutdown</goal>
-				            </goals>
-				        </execution>
-				    </executions>	            
 				<dependencies>
 			      <dependency>
 			        <groupId>org.apache.derby</groupId>
@@ -339,7 +293,6 @@
 			
         </plugins>
         </pluginManagement>	
-        
 	</build>
 	   <repositories>
         <repository>
@@ -347,21 +300,6 @@
             <name>Meaven central repository</name>
             <url>http://search.maven.org/</url>
         </repository>	   
+	   
 	   </repositories>
-	       <distributionManagement>
-        <downloadUrl>https://github.com/mansar/service</downloadUrl>
-        <repository>
-             <id>service-releases</id>
-            <name>Service Release Repository</name>
-            <url>https://github.com/mansar/service/release</url>
-            <layout>default</layout>
-        </repository>
-        <snapshotRepository>
-            <id>service-snapshots</id>
-            <name>service Snapshot Repository</name>
-            <url>file:////${project.build.directory}/${project.artifactId}/mvn-repo</url>
-            <uniqueVersion>false</uniqueVersion>
-        </snapshotRepository>                
-    </distributionManagement>	   
-
 </project>
