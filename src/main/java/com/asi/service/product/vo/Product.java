@@ -1,5 +1,7 @@
 package com.asi.service.product.vo;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -85,6 +87,22 @@ public class Product {
     private String distributorComments;
    
     private String additionalInfo;
+    
+    private List<ItemPriceDetail> itemPrices;
+
+	/**
+	 * @return the itemPrices
+	 */
+	public List<ItemPriceDetail> getItemPrices() {
+		return itemPrices;
+	}
+
+	/**
+	 * @param itemPrices the itemPrices to set
+	 */
+	public void setItemPrices(List<ItemPriceDetail> itemPrices) {
+		this.itemPrices = itemPrices;
+	}
 
 	/**
 	 * @return the iD

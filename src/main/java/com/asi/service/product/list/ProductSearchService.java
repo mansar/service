@@ -4,7 +4,6 @@ import java.io.UnsupportedEncodingException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -31,13 +30,10 @@ public class ProductSearchService {
 
 	@RequestMapping(value = "product/{xid}",method = RequestMethod.GET, headers="content-type=application/json, application/xml" ,produces={"application/xml", "application/json"} )
 	public ResponseEntity<Product> handle(HttpEntity<byte[]> requestEntity,@PathVariable String xid) throws UnsupportedEncodingException {
-		
-		repository.getPriceConfiguration(Integer.valueOf(xid).intValue());
+				
 		if(_LOGGER.isTraceEnabled()) _LOGGER.trace("calling service");
-		serviceResponse = client.doIt(Integer.valueOf(xid).intValue());
-		Product productResponse = new Product();
-		BeanUtils.copyProperties(serviceResponse, productResponse);
-		//productResponse.setiD(serviceResponse.getID());
+		
+		Product productResponse = repository.getProductPrices(Integer.valueOf(xid).intValue());
 		HttpHeaders responseHeaders = new HttpHeaders();
 	    responseHeaders.set("MyResponseHeader", "MyValue");
 	    return new ResponseEntity<Product>(productResponse, responseHeaders, HttpStatus.OK);
