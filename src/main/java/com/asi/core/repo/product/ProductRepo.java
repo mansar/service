@@ -59,13 +59,8 @@ public class ProductRepo {
 	}
     private ItemPriceDetail getBasePriceDetails(PriceGrid priceGrid, boolean setCurrency) {
     	ItemPriceDetail basePriceDetails = new ItemPriceDetail();
-        basePriceDetails.setBasePriceName(priceGrid.getDescription());
-        basePriceDetails.setPriceIncludes(priceGrid.getPriceIncludes());
-        if (priceGrid.getIsQUR()) {
-            basePriceDetails.setQUR("Y");
-        } else {
-            basePriceDetails.setQUR("");
-        }
+       // basePriceDetails.setBasePriceName(priceGrid.getDescription());
+        
         List<String> pricesList = new ArrayList<String>();
         List<String> quantityList = new ArrayList<String>();
         List<String> discountList = new ArrayList<String>();
@@ -73,12 +68,6 @@ public class ProductRepo {
             pricesList.add(p.getListPrice()+"");
             quantityList.add(p.getQuantity()+"");
             discountList.add(p.getDiscountRate().getIndustryDiscountCode());
-        }
-        basePriceDetails.setPrices(pricesList);
-        basePriceDetails.setQuantities(quantityList);
-        basePriceDetails.setDiscounts(discountList);
-        if (setCurrency && priceGrid.getCurrency() != null) {
-            basePriceDetails.setCurrency(priceGrid.getCurrency().getCode());
         }
         
 

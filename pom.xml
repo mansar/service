@@ -208,7 +208,6 @@
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<finalName>${project.artifactId}</finalName>
-		<directory>D:/service-builds/${project.artifactId}/${project.version}</directory>
 	<pluginManagement>
 		<plugins>
             <plugin>
